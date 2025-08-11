@@ -1,3 +1,5 @@
 /Makefile
 /objs/
 /tmp/
+/zig-out/
+/.zig-cache/
