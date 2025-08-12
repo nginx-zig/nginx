@@ -10,13 +10,21 @@ pub fn build(b: *std.Build) void {
         .optimize = optimize,
     });
     setupExe(b, exe);
+    {
+        const zlib_dep = b.dependency("zlib", .{
+            .target = target,
+            .optimize = optimize,
+        });
+
+        exe.linkLibrary(zlib_dep.artifact("z"));
+    }
     b.installArtifact(exe);
 
     const run_cmd = b.addRunArtifact(exe);
     if (b.args) |args| {
         run_cmd.addArgs(args);
     }
-    const run_step = b.step("run", "Run the app");
+    const run_step = b.step("run", "Run nginx");
     run_step.dependOn(&run_cmd.step);
 }
 
@@ -59,6 +67,4 @@ fn setupExe(b: *std.Build, exe: *std.Build.Step.Compile) void {
 
     exe.addIncludePath(b.path("src/http"));
     exe.addIncludePath(b.path("src/http/modules"));
-
-    exe.linkSystemLibrary("z");
 }

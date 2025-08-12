@@ -4,6 +4,17 @@ use zig build nginx
 
 zig 0.14.x
 
+## TODO
+
+* [ ] native compile darwin arm64
+    * [ ] cross compile
+* native compile
+  * [ ] darwin amd64
+  * [ ] linux arm64
+  * [ ] linux amd64
+* [ ] nginx dynamic module
+* [ ] nginx module by zig
+
 ## steps
 
 ```bash
