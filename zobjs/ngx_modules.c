@@ -61,6 +61,7 @@ ngx_module_t *ngx_modules[] = {
     &ngx_events_module,
     &ngx_event_core_module,
     &ngx_kqueue_module,
+
     &ngx_http_module,
     &ngx_http_core_module,
     &ngx_http_log_module,
